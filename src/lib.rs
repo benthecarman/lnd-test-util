@@ -8,7 +8,7 @@
 
 mod error;
 // mod ext;
-mod versions;
+pub mod versions;
 
 use bitcoind::anyhow;
 use bitcoind::anyhow::Context;
@@ -382,7 +382,7 @@ impl Drop for Lnd {
 pub fn downloaded_exe_path() -> Option<String> {
     if versions::HAS_FEATURE {
         Some(format!(
-            "{}/lnd/{}/lnd",
+            "{}/{}/lnd",
             env!("OUT_DIR"),
             versions::lnd_name(),
         ))
